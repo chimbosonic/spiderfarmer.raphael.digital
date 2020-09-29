@@ -11,8 +11,13 @@
     margin: 0;
     font: 400 15px/1.8 "Lato", simple_chalk;
     color: #111111;
+    
   }
   
+  .bgimg-1::-webkit-scrollbar {
+    display: none;
+  }
+
   .bgimg-1, .bgimg-2, .bgimg-3 {
     position: relative;
     opacity: 1;
@@ -29,6 +34,8 @@
     top: 0;
     left: 0;
     overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */ 
     background-image: url("img/raph.port.png");
   }
   
@@ -36,9 +43,9 @@
     position: absolute;
     left: 0;
     top: 25%;
-    width: 100%;
     text-align: center;
     color: #111111;
+    padding: 0 1em;
   }
   .link {
     position: absolute;
@@ -76,8 +83,11 @@
   }
   a {
       color: inherit; /* blue colors for links too */
-      text-decoration: inherit; 
-    }
+      text-decoration: inherit; /* no underline */
+  }
+  a:hover {
+    text-decoration: underline;
+  }
   </style>
   </head>
   <body>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font: 400 15px/1.8 "Lato", simple_chalk;
+      color: #111111;
+    }
+    
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+      position: relative;
+      opacity: 1;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+    }
+    .bgimg-1 {
+      background-image: url("img/spiderfarm.jpg");
+      height: 100%;
+    }
+    .bgvid-1 {
+    
+      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+    }
+    .caption {
+      position: absolute;
+      left: 0;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      color: #111111;
+    }
+    
+    .caption span.border {
+      /* background-color: #111; */
+      color: #fff;
+      padding: 18px;
+      font-size: 25px;
+      letter-spacing: 10px;
+    }
+    .player {
+      position: absolute;
+      left: 0;
+      top: 80%;
+      width: 100%;
+      text-align: center;
+      color: #111111;
+    }
+    
+    .player span.border {
+      /* background-color: #111; */
+      color: #fff;
+      padding: 18px;
+      font-size: 25px;
+      letter-spacing: 10px;
+    }
+    
+    h3 {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font: 20px "Lato", simple_chalk;
+      color: #111111;
+    }
+    @font-face {
+      font-family: simple_chalk;
+      src: url("fonts/Simple Chalk.ttf");
+    }
+    a {
+      color: inherit; /* blue colors for links too */
+      text-decoration: inherit; /* no underline */
+    }
+    a:hover {
+   text-decoration: underline;
+}
+  </style>
+
+
+  <body>
+    <div class="bgimg-1">
+      <video autoplay muted loop id="myVideo" class="bgvid-1">
+        <source src="vid/file.mp4" type="video/mp4">
+      </video>
+      <div class="caption">
+        <span class="border">
+          <a href="about.html">ABOUT</a> / <a href="mp3/SpiderFarmer.zip">DOWNLOAD ALBUM</a>
+        </span>
+        
+      </div> 
+      <div class="player">
+        <span class="border">
+          <div class="content" id="app"></div>
+        </span>
+      </div>
+    </div>
+    <script src="js/webamp.bundle.min.js"></script>
+    <script src="js/butterchurn.min.js"></script>
+    <script src="js/butterchurnPresets.min.js"></script>
+    <script>
+        const Webamp = window.Webamp;
+        new Webamp({
+            enableHotkeys: true,
+            initialTracks: [
+              {url: "mp3/01 - SpiderFarmer - Intro.mp3", metaData: {artist: "SpiderFarmer",title: "Intro"}},
+              {url: "mp3/02 - SpiderFarmer - LEVETICUS.mp3", metaData: {artist: "SpiderFarmer",title: "LEVETICUS"}},
+              {url: "mp3/03 - SpiderFarmer - I'd Rather Be.mp3", metaData: {artist: "SpiderFarmer",title: "I'd Rather Be"}},
+              {url: "mp3/04 - SpiderFarmer - Weave.mp3", metaData: {artist: "SpiderFarmer",title: "Weave"}},
+              {url: "mp3/05 - SpiderFarmer - Today.mp3", metaData: {artist: "SpiderFarmer",title: "Today"}},
+              {url: "mp3/06 - SpiderFarmer - Hiss.mp3", metaData: {artist: "SpiderFarmer",title: "Hiss"}},
+              {url: "mp3/07 - SpiderFarmer - Frootloops.mp3", metaData: {artist: "SpiderFarmer",title: "Frootloops"}},
+              {url: "mp3/08 - SpiderFarmer - Midsommar.mp3", metaData: {artist: "SpiderFarmer",title: "Midsommar"}},
+              {url: "mp3/09 - SpiderFarmer - Arachne's Purgatorio.mp3", metaData: {artist: "SpiderFarmer",title: "Arachne's Purgatorio"}},
+              {url: "mp3/10 - SpiderFarmer - Taxydermy.mp3", metaData: {artist: "SpiderFarmer",title: "Taxydermy"}},
+              {url: "mp3/11 - SpiderFarmer - Dracula.mp3", metaData: {artist: "SpiderFarmer",title: "Dracula"}},
+              {url: "mp3/12 - SpiderFarmer - Freezing Moon.mp3", metaData: {artist: "SpiderFarmer",title: "Freezing Moon"}}
+            ],
+            initialSkin: {
+              url: "skin/after_midnight.wsz"
+            },
+            __butterchurnOptions: {
+                importButterchurn: () => Promise.resolve(window.butterchurn),
+                getPresets: () => {
+                    const presets = window.butterchurnPresets.getPresets();
+                    return Object.keys(presets).map((name) => {
+                        return {
+                            name,
+                            butterchurnPresetObject: presets[name]
+                        };
+                    });
+                },
+                butterchurnOpen: true
+            },
+            __initialWindowLayout: {
+              main: { position: { x: 0, y: 0 } },
+                equalizer: { position: { x: 275, y: 0 }},
+                playlist: { position: { x: 275+275, y: 0 },  size: [0, 0] },
+                milkdrop: { position: { x: 0 , y: 116 },  size: [22, 1] }
+            }
+        }).renderWhenReady(document.getElementById('app'));
+    </script>
+  </body>
+</html>
+
+  

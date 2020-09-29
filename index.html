@@ -27,8 +27,14 @@
       top: 0;
       left: 0;
       overflow: scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */ 
       background-image: url("img/spiderfarm.jpg");
     }
+    .bgimg-1::-webkit-scrollbar {
+      display: none;
+    }
+
     .bgvid-1 {
     
       object-fit: cover;
